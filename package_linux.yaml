@@ -1,0 +1,24 @@
+---
+#### Ansible Playbook to perform Kernel Patching on RHEL/CentOS and Ubuntu/Debian Servers ####
+
+- hosts: all
+  serial: 4
+
+  tasks:
+    - name: Install ntpdate
+      ansible.builtin.package:
+        name: ntpdate
+        state: present
+
+    # This uses a variable as this changes per distribution.
+    - name: Remove the apache package
+      ansible.builtin.package:
+        name: "{{ apache }}"
+        state: absent
+
+    - name: Install the latest version of Apache and MariaDB
+      ansible.builtin.package:
+        name:
+          - httpd
+          - mariadb-server
+        state: latest
