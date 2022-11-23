@@ -1,0 +1,16 @@
+---
+#### Ansible Playbook to perform Kernel Patching on RHEL/CentOS and Ubuntu/Debian Servers ####
+
+- hosts: all
+  serial: 4
+
+     
+   - name: Remove  Apache on Solaris
+     pkg5:
+      name: name=web/server/apache-24
+      state: absent
+      
+   - name: Remove Apache on RHEL
+     yum:  name=httpd
+     when: ansible_os_family == "RedHat"
+     state: absent
