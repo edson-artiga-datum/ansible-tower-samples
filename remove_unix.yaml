@@ -4,7 +4,7 @@
 - hosts: all
   serial: 4
 
-     
+  tasks:   
    - name: Remove  Apache on Solaris
      pkg5:
       name: name=web/server/apache-24
