@@ -5,13 +5,13 @@
   serial: 4
 
   tasks:
-    - name: install Apache on Solaris
-      pkg5: name=web/server/apache-24
-      when: ansible_os_family == "Solaris"
- 
-    - name: install Apache on RHEL
-      yum:  name=httpd
-      when: ansible_os_family == "RedHat"
- 
-    - name: start Apache
-      service: name={{ apache }} state=started
+   - name: install Apache on Solaris
+     pkg5: name=web/server/apache-24
+     when: ansible_os_family == "Solaris"
+
+   - name: install Apache on RHEL
+     yum:  name=httpd
+     when: ansible_os_family == "RedHat"
+
+   - name: start Apache
+     service: name={{ apache }} state=started
