@@ -1,7 +1,10 @@
 - name: Hello World Sample
   hosts: all
+  gather_facts: False
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+    - name: Check Dist Version
+      shell: cat /etc/os-release
+      register: response
+
+    - debug: msg="{{ response.stdout }}"
 
