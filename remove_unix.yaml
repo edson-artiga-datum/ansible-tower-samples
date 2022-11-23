@@ -9,8 +9,3 @@
      pkg5:
       name: name=web/server/apache-24
       state: absent
-      
-   - name: Remove Apache on RHEL
-     yum:  name=httpd
-     when: ansible_os_family == "RedHat"
-     state: absent
